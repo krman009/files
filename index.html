@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Files: Kind of like Code Snippets</title>
+</head>
+<body>
+    <header><h1>Files: Kind of like Code Snippets</h1></header>
+    <main>
+        <ul id="files"></ul>
+    </main>
+    <footer>2019 by Kaushalya R. Mandaliya</footer>
+</body>
+<script>
+    // Create a new request object
+    var xhttp = new XMLHttpRequest();
+    var response = []
+    let filesContainer = document.getElementById("files");
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            response = xhttp.responseText;
+            var json_data = JSON.parse(response);
+            console.log("response in JSON below::")
+            console.dir(json_data)
+            json_data.forEach(function (file) {
+                if (!file.name.startsWith('README') && file.type == 'file') {
+                    const li = document.createElement('li');
+                    var a = document.createElement('a');
+                    a.href = file.download_url;
+                    a.innerHTML = file.name;
+                    li.appendChild(a)
+                    filesContainer.appendChild(li);
+                }
+            });
+            // console.log("ok" + response);
+        }
+    };
+    xhttp.open("GET", "https://api.github.com/repos/krman009/files/contents", true);
+    xhttp.send();
+    // console.log(request.response);
+    // document.write(request.reponse);
+    // var response = JSON.parse(request.response);
+    // foreach request in request.response:request
+    // response.forEach(function (file) {
+    //     const li = document.createElement('li');
+    //     li.innerHTML = file.name;
+    //     filesContainer.appendChild(li);
+    //     // el.innerHTML = name; // shows the alert
+    // });
+
+</script>
+</html>
