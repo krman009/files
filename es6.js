@@ -68,3 +68,35 @@ const multiply = (a = 1) => {
 
 const list = ['Jake Sparrow', 'John Sinna', 'Akshay Kumar', 'Ajay Devgan', 'Anil Kapoor']
 list.forEach(product => console.log(product + " " + Math.random(20).toPrecision(2)))
+
+
+
+// Class in ES6
+
+class List {
+    constructor(items, number_of_items) {
+        this.items = items;
+        this.number_of_items = number_of_items;
+    }
+    print_list() {
+        console.log(`Items: ${this.items}`);
+    }
+}
+
+
+class Product extends List {
+    constructor(items, number_of_items, amount, cost) {
+        super(items, number_of_items);
+        this.amount = amount;
+        this.cost = cost;
+    }
+    print_list_info() {
+        this.print_list();
+        console.log(`Amount is: ${this.amount} and Cost is ${this.cost}.`);
+    }
+}
+
+const prod = new Product(["Kakdi", "Dadam", "Chiku"], 3, 300, 220);
+console.log(prod);
+
+prod.print_list_info();
