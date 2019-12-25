@@ -100,3 +100,28 @@ const prod = new Product(["Kakdi", "Dadam", "Chiku"], 3, 300, 220);
 console.log(prod);
 
 prod.print_list_info();
+
+
+class Vehicle {
+    constructor(name, weight, price) {
+        this.name = name;
+        this.weight = weight;
+        this.price = price;
+    }
+    print_information() {
+        console.log(`Name is ${this.name} and price is ${this.price}.`);
+    }
+    compare_price(second_price) {
+        if (this.price === second_price) {
+            console.log(`${this.name}'s price and entered price is same.`);
+        } else if (this.price < second_price) {
+            console.log(`${this.name}'s price is less than given price by ${second_price - this.price}`);
+        } else {
+            console.log(`${this.name}'s price is greater than given price by ${this.price - second_price}`);
+        }
+    }
+}
+
+const shine = new Vehicle('Shine', '60KG', 80000);
+shine.print_information();
+shine.compare_price(80000);
