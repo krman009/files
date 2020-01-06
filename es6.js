@@ -125,3 +125,33 @@ class Vehicle {
 const shine = new Vehicle('Shine', '60KG', 80000);
 shine.print_information();
 shine.compare_price(80000);
+
+
+// High Order Functions: forEach, map, sort, reduce (and Spread syntax)
+
+const data_of_people = [
+    { name: "Kajal", age: 25, occupation: "Engineer", location: "Ahmedabad", isMarried: false },
+    { name: "Amrish", age: 23, occupation: "Businessman", location: "Indore", isMarried: false },
+    { name: "Hemant", age: 27, occupation: "Professor", location: "Hyderabad", isMarried: true },
+    { name: "Priya", age: 21, occupation: "HR Executive", location: "Amritsar", isMarried: false },
+    { name: "Ritesh", age: 28, occupation: "Entrepreneur", location: "Bangalore", isMarried: false },
+    { name: "Jignesh", age: 35, occupation: "Engineer", location: "Pune", isMarried: true },
+    { name: "Nilesh", age: 22, occupation: "Vadapav Shop Owner", location: "Mumbai", isMarried: false },
+    { name: "Amit", age: 19, occupation: "Content Writer", location: "Agra", isMarried: false },
+    { name: "Jigisha", age: 28, occupation: "Engineer", location: "Rajkot", isMarried: true },
+    { name: "Firoz", age: 29, occupation: "Event Management", location: "Lucknow", isMarried: true },
+    { name: "Riya", age: 22, occupation: "Entrepreneur", location: "Vadodara", isMarried: false },
+    { name: "Girish", age: 24, occupation: "Social Media Marketing", location: "Vadodara", isMarried: true }
+]
+
+// will print name - age of everyone
+data_of_people.forEach(person => console.log(`${person.name} - ${person.age}`))
+
+// extracting occupation
+const occupation_list = data_of_people.map(person => person.occupation)
+
+// removing duplicate from occupation_list array
+// using Spread syntax
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+
+let uniq = [...new Set(occupation_list)];
